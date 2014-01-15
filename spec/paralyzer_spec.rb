@@ -35,21 +35,25 @@ describe 'paralyzer object' do
     profile.should_not be_empty
   end
 
+#  it 'should return a profile by id' do
+#    profile = @my_paralyzer.get_profile_by_id('oNBHSVbajn')
+#    profile.should_not be_empty
+#    profile._total.should == 1
+#  end
 
   it 'should be able to lookup a user by email address' do
-    emails = ["me@example.com"]
-    email_csv = ParalyzerHelper.array_to_email_string(emails, "email")
-    accounts = @my_paralyzer.get_profile_by_email(email_csv)
+    emails = "email=me@you.com"
+    accounts = @my_paralyzer.get_profile_by_email(emails)
+    puts accounts
     accounts.kind_of? LinkedIn::Mash.class
-    accounts._total.should equal 1
+    accounts._total.should == 1
   end
 
-  it 'should be able to lookup multiple email addresses' do
-    emails = ["me@example.com", "you@example.com", "them@example.com"]
-    email_csv = ParalyzerHelper.array_to_email_string(emails, "email")
-    accounts = @my_paralyzer.get_profile_by_email(email_csv)
-    accounts.kind_of? LinkedIn::Mash.class
-    accounts._total.should == 3
-  end
+#  it 'should be able to lookup multiple email addresses' do
+#    emails = ["me@example.com", "you@example.com", "them@example.com"]
+#    accounts = @my_paralyzer.get_profile_by_email(emails)
+#    accounts.kind_of? LinkedIn::Mash.class
+#    accounts._total.should == 3
+#  end
 
 end

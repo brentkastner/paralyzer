@@ -4,11 +4,11 @@ module ParalyzerHelper
     url_string = nil
 
     if arr.count == 1
-      url_string = arr.first.to_s
+      url_string = option + arr.first.to_s
     else
-      url_string = arr.shift.to_s
+      url_string = option + arr.shift.to_s
       arr.each do |val|
-        url_string << "," + option + '=' + val.to_s
+        url_string << "," + option + val.to_s
       end
     end
 

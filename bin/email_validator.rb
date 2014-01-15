@@ -31,11 +31,12 @@ end
 
 until emails.count == 0 do
   email_chunk = emails.shift(Integer(@email_chunk_size))
-  email_csv = ParalyzerHelper.array_to_email_string(email_chunk, "email")
+  email_csv = ParalyzerHelper.array_to_email_string(email_chunk, "email=")
 
-  #puts email_csv
+  email_csv
 
   result = @my_paralyzer.get_profile_by_email(email_csv)
+  puts result
   File.open('in-process.csv', 'w') { |file| file.write(emails.to_csv.chomp) }
   matched_emails = []
   output = result["values"]
